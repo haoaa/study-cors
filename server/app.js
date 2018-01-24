@@ -16,6 +16,13 @@ app.get('/no-cors', function(req, res){
 });
 
 /* -------------------------------------------------------------------------- */
+// The default configuration is the equivalent of:
+// {
+//   "origin": "*",
+//   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   "preflightContinue": false,
+//   "optionsSuccessStatus": 204
+// }
 var corsOptions = {
   origin: 'http://localhost:3001',
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
@@ -35,8 +42,15 @@ app.post('/simple-cors', cors(), function(req, res){
 });
 
 /* -------------------------------------------------------------------------- */
-
-app.options('/complex-cors', cors());
+var corscomplex = {
+  origin: 'http://localhost:3001',
+  optionsSuccessStatus: 200,
+  methods:['GET', 'PUT', 'POST', 'DELETE'],
+  allowedHeaders: 'x',
+  credentials:true,
+  maxAge:3800
+}
+app.options('/complex-cors', cors(corscomplex));
 app.del('/complex-cors', cors(), function(req, res){
   res.json({
     text: 'Complex CORS requests are working. [DELETE]'
