@@ -16,8 +16,11 @@ app.get('/no-cors', function(req, res){
 });
 
 /* -------------------------------------------------------------------------- */
-
-app.get('/simple-cors', cors(), function(req, res){
+var corsOptions = {
+  origin: 'http://localhost:3001',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+app.get('/simple-cors', cors(corsOptions), function(req, res){
   res.json({
     text: 'Simple CORS requests are working. [GET]'
   });
