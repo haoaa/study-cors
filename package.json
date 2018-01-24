@@ -1,20 +1,12 @@
 {
-  "name": "node-cors-server",
+  "name": "study-cors",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "s": "node ./server/app.js",
     "c": "node ./client/app.js"
   },
-  "engines": {
-    "node": "0.10.x",
-    "npm": "1.2.x"
-  },
   "dependencies": {
     "express": "*",
     "cors": "*"
-  },
-  "devDependencies": {
-    "nodemon":"*"
   }
 }
